@@ -63,4 +63,11 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 | **IR Sensor (Chuồng 1)** | Tín hiệu OUT | GPIO 34 |
 | **IR Sensor (Chuồng 2)** | Tín hiệu OUT | GPIO 35 |
 | **Servo SG90 (Chuồng 1)**| Xung PWM | GPIO 13 |
-| **Servo SG90 (Chuồng 2)**| X
+| **Servo SG90 (Chuồng 2)**| Xung PWM | GPIO 14 |
+| **Cảm biến DHT11** | Tín hiệu DATA | GPIO 4 |
+| **Cảm biến MQ** | Tín hiệu Analog | GPIO 36 (VP - ADC) |
+| **Relay Quạt (Chuồng 1)**| Điều khiển mức cao/thấp | GPIO 27 |
+| **Relay Quạt (Chuồng 2)**| Điều khiển mức cao/thấp | GPIO 12 |
+| **Đèn LED (Chuồng 1)** | Cụm 2 đèn | GPIO 16 |
+| **Đèn LED (Chuồng 2)** | Cụm 2 đèn | GPIO 17 |
+| **Nguồn cấp (Module XL4015)** | 5V & GND | Cấp chung cho Servo, Quạt, MQ (Chỉ nối chung GND với ESP32) |
