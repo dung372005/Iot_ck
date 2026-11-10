@@ -51,9 +51,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 *   **Điều khiển từ xa:** Người dùng có thể chủ động bật/tắt đèn và quạt thông qua bảng điều khiển Node-RED, các lệnh này được gửi qua MQTT xuống ESP32 để xử lý lập tức.
 
 ### 4. Sơ đồ khối
-
-<img width="778" height="433" alt="66fc315b-0ddc-40dc-b38a-05fc8c336df2" src="https://github.com/user-attachments/assets/ce94639a-a814-4330-895f-141e1b28c56d" />
-
+<img width="1024" height="547" alt="2bd8b723-fa55-4e8a-8087-5063a6517bb5" src="https://github.com/user-attachments/assets/c4247ace-46c9-4ee4-a1e0-0928b0f55b3c" />
 ---
 
 ## Bảng kết nối các chân ESP32 (Pin Mapping)
