@@ -1,59 +1,79 @@
-# Hệ Thống Quản Lý Chăm Sóc Thú Cưng Thông Minh (Smart Pet Care Management System)
+# HỆ THỐNG QUẢN LÝ CHĂM SÓC THÚ CƯNG THÔNG MINH
 
-Dự án IoT hỗ trợ giám sát môi trường và tự động hóa quy trình chăm sóc thú cưng. Hệ thống sử dụng vi điều khiển trung tâm ESP32, thu thập dữ liệu từ các cảm biến, điều khiển cơ cấu chấp hành và giao tiếp theo thời gian thực (Real-time) với Dashboard Node-RED thông qua giao thức MQTT.
+## Bài toán
 
-## 1. Tính năng chính (Features)
-*   **Giám sát môi trường:** Đo nhiệt độ, độ ẩm (DHT11) và cảnh báo chất lượng không khí/khí gas (MQ-6).
-*   **Giám sát ánh sáng:** Cảm biến quang trở (LDR) để tự động hóa hệ thống chiếu sáng.
-*   **Theo dõi vật cản & Chuyển động:** Sử dụng cảm biến siêu âm (HC-SR04) và hồng ngoại (IR Sensor) để phát hiện sự hiện diện của thú cưng hoặc định mức thức ăn/nước uống.
-*   **Điều khiển tự động/Từ xa:**
-    *   Đóng/mở cửa tự động (Servo SG90).
-    *   Hệ thống làm mát, thông gió (Quạt 5V).
-    *   Hệ thống chiếu sáng (LED) và bơm nước/tải lớn (Relay).
-*   **Giao diện giám sát (GUI):** Real-time Dashboard trực quan xây dựng trên Node-RED, hỗ trợ giám sát và điều khiển từ xa.
+### Nhu cầu thực tế
 
-## 2. Yêu cầu phần cứng & Công nghệ (Tech Stack)
-*   **Hardware:** ESP32, Module nguồn DC XL4015, DHT11, MQ-6, LDR, HC-SR04, IR Sensor, Servo SG90, Quạt tản nhiệt 5V, Module Relay.
-*   **Firmware:** Viết bằng C/C++ (ưu tiên Non-blocking code với `millis()` hoặc FreeRTOS).
-*   **IDE:** VS Code + PlatformIO (hoặc Arduino IDE).
-*   **IoT Protocol:** MQTT (PubSubClient).
-*   **Dashboard:** Node-RED.
+Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú cưng hiện nay đòi hỏi sự giám sát liên tục và tiêu tốn nhiều nhân lực. Người quản lý phải theo dõi thủ công tình trạng trống/đầy của từng chuồng, thời điểm cần cho ăn, cũng như chất lượng môi trường không khí (để dọn dẹp kịp thời). Việc quản lý thủ công này dễ dẫn đến thiếu sót, làm giảm chất lượng dịch vụ và ảnh hưởng đến sức khỏe của vật nuôi. Những vấn đề này cho thấy sự cần thiết của một hệ thống quản lý chăm sóc thú cưng thông minh đa chức năng:
 
-## 3. Block Diagram (Sơ đồ khối)
+*   **Quản lý không gian chuồng tối ưu:** Giúp nhân viên dễ dàng xác định chuồng nào đang trống, chuồng nào có thú cưng để sắp xếp hợp lý.
+*   **Tự động hóa chăm sóc:** Tự động phát hiện khi thú cưng tiến đến máng ăn và xả lượng thức ăn phù hợp, giảm bớt công việc thủ công.
+*   **Giám sát môi trường & cảnh báo an toàn:** Theo dõi nhiệt độ, độ ẩm tổng thể và phát hiện mùi hôi/chất thải (khí NH3) để đưa ra cảnh báo dọn dẹp kịp thời.
 
-Sơ đồ khối mô tả kiến trúc phần cứng và luồng dữ liệu của hệ thống:
+### Nguồn cảm hứng cho dự án
 
-![Block Diagram](./images/block_diagram.png)  
-*(Đảm bảo ảnh sơ đồ khối chuẩn đã được lưu tại đường dẫn `./images/block_diagram.png` trong repo)*
+*   **Các hệ thống đỗ xe thông minh:** Dự án lấy cảm hứng từ logic quản lý slot (vị trí) của bãi đỗ xe thông minh, biến tấu thành việc quản lý độc lập từng không gian chuồng thú y, kết hợp với các cơ cấu chấp hành (quạt, đèn) để tạo thành vòng lặp khép kín.
+*   **Nhu cầu nâng cao chất lượng dịch vụ thú y:** Phát triển một mô hình đơn giản, chi phí thấp với ESP32 nhưng có thể mở rộng, giúp các cơ sở chăm sóc quy mô nhỏ dễ dàng tiếp cận công nghệ IoT.
 
-## 4. Pin Mapping (Sơ đồ nối chân)
+---
 
-Bảng phân chân GPIO kết nối giữa ESP32 và các module ngoại vi. 
+## Nội dung chính
 
-| Thiết bị / Linh kiện | Chức năng | Chân ESP32 (GPIO) | Loại tín hiệu |
-| :--- | :--- | :--- | :--- |
-| **Cảm biến DHT11** | Đọc nhiệt độ, độ ẩm môi trường | GPIO 15 | Digital Input |
-| **Cảm biến khí MQ-6** | Phát hiện khí gas / ô nhiễm | GPIO 34 | Analog Input |
-| **Cảm biến LDR** | Đọc cường độ ánh sáng | GPIO 35 | Analog Input |
-| **Cảm biến HC-SR04** | Đo khoảng cách (Mức thức ăn/nước) | TRIG: 5, ECHO: 18 | Digital I/O |
-| **Cảm biến hồng ngoại (IR)** | Phát hiện chuyển động | GPIO 13 | Digital Input |
-| **Quạt 5V (Chuồng 1)** | Làm mát khu vực 1 | **GPIO 27** | Digital Output |
-| **Quạt 5V (Chuồng 2)** | Làm mát khu vực 2 | **GPIO 12** | Digital Output |
-| **Servo SG90** | Đóng ngắt cửa tự động | GPIO 14 | PWM Output |
-| **Đèn LED** | Chiếu sáng / Cảnh báo | GPIO 2 | Digital Output |
-| **Relay** | Kích hoạt bơm nước / Tải lớn | GPIO 26 | Digital Output |
+### 1. Phần cứng
 
-> **Lưu ý phần cứng:** 
-> * Các chân GPIO ngoại trừ `GPIO 27` và `GPIO 12` đang được đặt làm ví dụ, cần mapping lại đúng với thiết kế schematic (KiCad) thực tế.
-> * Cần đảm bảo tách biệt nguồn (AGND/DGND) hoặc dùng module XL4015 hạ áp cấp dòng ổn định cho Quạt và Servo để tránh nhiễu sụt áp cho ESP32.
+*   **Vi điều khiển:** ESP32 DevKit V1 (30 chân)
+*   **Module nguồn:** XL4015 (Hạ áp ổn định 5V cho cụm động cơ, quạt và cảm biến khí)
+*   **Khu vực giám sát chuồng:**
+    *   2 x Cảm biến siêu âm HC-SR04: Phát hiện sự hiện diện của thú cưng tại 2 chuồng độc lập.
+*   **Cổng vào/ra (Cơ cấu xả thức ăn):**
+    *   2 x Cảm biến hồng ngoại (IR Sensor): Nhận diện thú cưng khi tiến gần khay ăn.
+    *   2 x Động cơ Servo SG90: Mở nắp xả thức ăn tự động khi có tín hiệu từ cảm biến IR.
+*   **Hệ thống môi trường và an toàn:**
+    *   1 x Cảm biến DHT11: Giám sát nhiệt độ và độ ẩm không khí tổng thể.
+    *   1 x Cảm biến MQ: Lắp tại vách ngăn thông gió sát trần để phát hiện mùi hôi/chất lượng không khí chung của 2 chuồng.
+    *   4 x Đèn LED (2mm): Bố trí mỗi chuồng 2 đèn, đấu song song chung 1 chân GPIO qua điện trở hạn dòng.
+    *   2 x Quạt 5V: Điều khiển thông gió độc lập cho mỗi chuồng.
 
-## 5. Hướng dẫn triển khai (Deployment)
+### 2. Phần mềm
 
-### 5.1. Nạp Firmware (ESP32)
-1. Clone repository này về máy tính.
-2. Mở thư mục code bằng **VS Code + PlatformIO**.
-3. Mở file `src/main.cpp` (hoặc `main.ino`), cấu hình lại các thông số mạng:
-   ```cpp
-   const char* ssid = "YOUR_WIFI_SSID";
-   const char* password = "YOUR_WIFI_PASSWORD";
-   const char* mqtt_server = "YOUR_MQTT_BROKER_IP";
+*   **Môi trường phát triển:** PlatformIO (Viết mã C/C++ non-blocking).
+*   **Giao thức truyền thông:** MQTT thông qua Broker trực tuyến (ví dụ: EMQX, HiveMQ).
+*   **Bảng điều khiển (Node-RED Dashboard):**
+    *   **Hiển thị trạng thái chuồng (3 mức cảnh báo):** Màu Xanh (Trống), Màu Đỏ (Có thú cưng), Màu Vàng (Cảnh báo chất lượng không khí kém, cần dọn dẹp).
+    *   **Giám sát môi trường:** Hiển thị trực quan Nhiệt độ, Độ ẩm bằng Gauge và vẽ biểu đồ Line Chart theo thời gian thực.
+    *   **Điều khiển thủ công:** Cung cấp các công tắc (Switch) để bật/tắt quạt thông gió và đèn LED chiếu sáng độc lập cho từng chuồng.
+
+### 3. Ý tưởng hoạt động
+
+*   **Giám sát hiện diện:** Các cảm biến siêu âm HC-SR04 liên tục đo khoảng cách. Khi có vật nuôi, dữ liệu được ESP32 cập nhật lên Node-RED để đổi màu trạng thái phòng thành Đỏ.
+*   **Tự động cho ăn:** Khi thú cưng tiến gần máng thức ăn, cảm biến IR kích hoạt (kéo mức LOW). ESP32 tự động lọc nhiễu và mở Servo xả cám, phục vụ cho kịch bản demo nhanh chóng.
+*   **Giám sát môi trường & Cảnh báo:** DHT11 và MQ liên tục đọc thông số. Nếu cảm biến MQ phát hiện nồng độ khí/mùi hôi vượt ngưỡng giới hạn an toàn, Node-RED sẽ chuyển giao diện phòng sang màu Vàng cảnh báo nhân viên dọn dẹp.
+*   **Điều khiển từ xa:** Người dùng có thể chủ động bật/tắt đèn và quạt thông qua bảng điều khiển Node-RED, các lệnh này được gửi qua MQTT xuống ESP32 để xử lý lập tức.
+
+### 4. Sơ đồ khối
+
+*(Lưu ý: Up ảnh sơ đồ khối của bạn vào thư mục dự án trên GitHub và thay link ảnh vào đây)*
+
+<img width="778" height="433" alt="66fc315b-0ddc-40dc-b38a-05fc8c336df2" src="https://github.com/user-attachments/assets/ce94639a-a814-4330-895f-141e1b28c56d" />
+
+---
+
+## Bảng kết nối các chân ESP32 (Pin Mapping)
+
+| Thiết bị | Chức năng | Chân ESP32 (DevKit V1 30 chân) |
+| :--- | :--- | :--- |
+| **HC-SR04 (Chuồng 1)** | TRIG | GPIO 26 |
+| | ECHO | GPIO 25 |
+| **HC-SR04 (Chuồng 2)** | TRIG | GPIO 33 |
+| | ECHO | GPIO 32 |
+| **IR Sensor (Chuồng 1)** | Tín hiệu OUT | GPIO 34 |
+| **IR Sensor (Chuồng 2)** | Tín hiệu OUT | GPIO 35 |
+| **Servo SG90 (Chuồng 1)**| Xung PWM | GPIO 13 |
+| **Servo SG90 (Chuồng 2)**| Xung PWM | GPIO 14 |
+| **Cảm biến DHT11** | Tín hiệu DATA | GPIO 4 |
+| **Cảm biến MQ** | Tín hiệu Analog | GPIO 36 (VP - ADC) |
+| **Quạt 5V (Chuồng 1)**| Điều khiển bật/tắt | GPIO 27 |
+| **Quạt 5V (Chuồng 2)**| Điều khiển bật/tắt | GPIO 12 |
+| **Đèn LED (Chuồng 1)** | Cụm 2 đèn | GPIO 16 |
+| **Đèn LED (Chuồng 2)** | Cụm 2 đèn | GPIO 17 |
+| **Nguồn cấp (Module XL4015)** | 5V & GND | Cấp chung cho Servo, Quạt, MQ (Chỉ nối chung GND với ESP32) |
