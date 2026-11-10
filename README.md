@@ -52,8 +52,6 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 ### 4. Sơ đồ khối
 
-*(Lưu ý: Up ảnh sơ đồ khối của bạn vào thư mục dự án trên GitHub và thay link ảnh vào đây)*
-
 <img width="778" height="433" alt="66fc315b-0ddc-40dc-b38a-05fc8c336df2" src="https://github.com/user-attachments/assets/ce94639a-a814-4330-895f-141e1b28c56d" />
 
 ---
