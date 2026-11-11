@@ -37,7 +37,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 ### 2. Phần mềm
 
 *   **Môi trường phát triển:** PlatformIO (Viết mã C/C++ non-blocking).
-*   **Giao thức truyền thông:** MQTT thông qua Broker trực tuyến (ví dụ: EMQX, HiveMQ).
+*   **Giao thức truyền thông:** MQTT kết nối bảo mật qua TLS/SSL (cổng 8883) thông qua máy chủ EMQX Cloud. Sử dụng thư viện `WiFiClientSecure` để xác thực chứng chỉ CA.
 *   **Bảng điều khiển (Node-RED Dashboard):** Hiển thị trạng thái, điều khiển thủ công và cảnh báo môi trường.
 
 ### 3. Ý tưởng hoạt động
@@ -78,7 +78,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 ### 5. Giao tiếp MQTT
 
-Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các topic dùng tiền tố riêng có dạng `hotel/...` để phân loại dữ liệu.
+Hệ thống sử dụng broker EMQX Cloud với chuẩn mã hóa TLS/SSL qua cổng 8883 nhằm bảo mật luồng dữ liệu điều khiển và giám sát. Vi điều khiển ESP32 được cấu hình `WiFiClientSecure` kèm Root CA Certificate để thực hiện bắt tay bảo mật (TLS Handshake) trước khi truyền nhận. Tất cả topic dùng tiền tố riêng có dạng `hotel/...`.
 
 | Topic | Hướng | Nội dung (Payload) |
 | :--- | :--- | :--- |
@@ -86,7 +86,6 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 | `hotel/cage/<id>/status` | ESP32 → Node-RED | JSON: trạng thái phòng (trống/có vật) và tình trạng đòi ăn |
 | `hotel/cage/<id>/cmd` | Node-RED → ESP32 | Lệnh điều khiển dạng JSON: `{ "fan": 1, "light": 0 }` |
 | `hotel/status` | ESP32 → Node-RED | `online` / `offline` (Last Will and Testament) |
-
 ### 6. Dashboard Node-RED
 
 *   **Trạng thái phòng:** Xây dựng bằng `ui_template` (HTML/CSS), tự động đổi màu theo 3 trạng thái: Xanh (Phòng trống), Đỏ (Có thú cưng), Vàng (Môi trường ô nhiễm, cần dọn dẹp).
@@ -99,7 +98,7 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 | Giai đoạn | Nội dung |
 | :---: | :--- |
 | 1 | Thiết kế sơ đồ nối dây (Pin Mapping); mô phỏng logic đọc cảm biến cơ bản trên Wokwi: DHT11, HC-SR04, IR và xuất xung PWM cho Servo SG90 |
-| 2 | Cấu hình PlatformIO, lập trình kết nối WiFi và MQTT Broker; viết code test gửi/nhận bản tin cơ bản, kiểm tra điều khiển Quạt 5V và Đèn LED |
+| 2 | Cấu hình PlatformIO, nhúng Root CA Certificate; lập trình kết nối WiFi và MQTT Broker bảo mật qua TLS (cổng 8883); viết code test điều khiển Quạt 5V và Đèn LED |
 | 3 | Xây dựng thuật toán non-blocking (dùng `millis()`): Máy trạng thái nhận diện phòng (HC-SR04), lọc nhiễu IR để mở Servo, đóng gói JSON gửi lên MQTT |
 | 4 | Xây dựng Node-RED Dashboard: Lên khung giao diện giám sát chuồng (Xanh/Đỏ/Vàng), vẽ biểu đồ Nhiệt độ/Độ ẩm/Khí MQ, tạo công tắc điều khiển Quạt/Đèn |
 | 5 | Tích hợp logic nâng cao trên Node-RED: Xử lý ngưỡng báo động khí MQ để chuyển màu cảnh báo, ghi nhật ký (log) sự kiện xả thức ăn và dọn dẹp |
