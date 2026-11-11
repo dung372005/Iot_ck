@@ -38,10 +38,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 *   **Môi trường phát triển:** PlatformIO (Viết mã C/C++ non-blocking).
 *   **Giao thức truyền thông:** MQTT thông qua Broker trực tuyến (ví dụ: EMQX, HiveMQ).
-*   **Bảng điều khiển (Node-RED Dashboard):**
-    *   **Hiển thị trạng thái chuồng (3 mức cảnh báo):** Màu Xanh (Trống), Màu Đỏ (Có thú cưng), Màu Vàng (Cảnh báo chất lượng không khí kém, cần dọn dẹp).
-    *   **Giám sát môi trường:** Hiển thị trực quan Nhiệt độ, Độ ẩm bằng Gauge và vẽ biểu đồ Line Chart theo thời gian thực.
-    *   **Điều khiển thủ công:** Cung cấp các công tắc (Switch) để bật/tắt quạt thông gió và đèn LED chiếu sáng độc lập cho từng chuồng.
+*   **Bảng điều khiển (Node-RED Dashboard):** Hiển thị trạng thái, điều khiển thủ công và cảnh báo môi trường.
 
 ### 3. Ý tưởng hoạt động
 
@@ -51,7 +48,10 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 *   **Điều khiển từ xa:** Người dùng có thể chủ động bật/tắt đèn và quạt thông qua bảng điều khiển Node-RED, các lệnh này được gửi qua MQTT xuống ESP32 để xử lý lập tức.
 
 ### 4. Sơ đồ khối
-<img width="655" height="350" alt="d8382b1a-113f-46ce-b8fc-5befa32c3a99" src="https://github.com/user-attachments/assets/2254427f-7dc8-4772-a94b-8cd10fae71a7" />
+
+*(Lưu ý: Up ảnh sơ đồ khối của bạn vào thư mục dự án trên GitHub và thay link ảnh vào phần ngoặc đơn bên dưới)*
+
+`![Sơ đồ khối](link_anh_so_do_khoi_cua_ban_tren_github.png)`
 
 ---
 
@@ -59,10 +59,8 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 | Thiết bị | Chức năng | Chân ESP32 (DevKit V1 30 chân) |
 | :--- | :--- | :--- |
-| **HC-SR04 (Chuồng 1)** | TRIG | GPIO 26 |
-| | ECHO | GPIO 25 |
-| **HC-SR04 (Chuồng 2)** | TRIG | GPIO 33 |
-| | ECHO | GPIO 32 |
+| **HC-SR04 (Chuồng 1)** | TRIG / ECHO | GPIO 26 / GPIO 25 |
+| **HC-SR04 (Chuồng 2)** | TRIG / ECHO | GPIO 33 / GPIO 32 |
 | **IR Sensor (Chuồng 1)** | Tín hiệu OUT | GPIO 34 |
 | **IR Sensor (Chuồng 2)** | Tín hiệu OUT | GPIO 35 |
 | **Servo SG90 (Chuồng 1)**| Xung PWM | GPIO 13 |
@@ -73,4 +71,43 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 | **Quạt 5V (Chuồng 2)**| Điều khiển bật/tắt | GPIO 12 |
 | **Đèn LED (Chuồng 1)** | Cụm 2 đèn | GPIO 16 |
 | **Đèn LED (Chuồng 2)** | Cụm 2 đèn | GPIO 17 |
-| **Nguồn cấp (Module XL4015)** | 5V & GND | Cấp chung cho Servo, Quạt, MQ (Chỉ nối chung GND với ESP32) |
+| **Nguồn XL4015** | 5V & GND | Cấp chung cho Servo, Quạt, MQ |
+
+---
+
+### 5. Giao tiếp MQTT
+
+Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các topic dùng tiền tố riêng có dạng `hotel/...` để phân loại dữ liệu.
+
+| Topic | Hướng | Nội dung (Payload) |
+| :--- | :--- | :--- |
+| `hotel/env` | ESP32 → Node-RED | JSON: nhiệt độ, độ ẩm, chỉ số không khí tổng thể |
+| `hotel/cage/<id>/status` | ESP32 → Node-RED | JSON: trạng thái phòng (trống/có vật) và tình trạng đòi ăn |
+| `hotel/cage/<id>/cmd` | Node-RED → ESP32 | Lệnh điều khiển dạng JSON: `{ "fan": 1, "light": 0 }` |
+| `hotel/status` | ESP32 → Node-RED | `online` / `offline` (Last Will and Testament) |
+
+### 6. Dashboard Node-RED
+
+*   **Trạng thái phòng:** Xây dựng bằng `ui_template` (HTML/CSS), tự động đổi màu theo 3 trạng thái: Xanh (Phòng trống), Đỏ (Có thú cưng), Vàng (Môi trường ô nhiễm, cần dọn dẹp).
+*   **Môi trường:** Biểu đồ Line Chart hiển thị nhiệt độ, độ ẩm và chỉ số chất lượng không khí (khí MQ) theo thời gian.
+*   **Điều khiển thiết bị:** Cung cấp các công tắc (Switch) để chủ động điều khiển bật/tắt độc lập Quạt thông gió và Đèn chiếu sáng tại từng chuồng.
+*   **Nhật ký sự kiện:** Ghi nhận và hiển thị các cảnh báo trạng thái (ví dụ: "Chuồng 1 vừa xả thức ăn", "Chuồng 2 đang cần dọn dẹp").
+*   **Trạng thái thiết bị:** Hiển thị tín hiệu kết nối online/offline từ ESP32.
+
+### 7. Hình ảnh linh kiện
+
+*(Lưu ý: Bạn hãy up ảnh thực tế của linh kiện vào GitHub và thay link vào trong các dấu ngoặc đơn)*
+
+| | | |
+|:---:|:---:|:---:|
+| ![ESP32](link_anh) <br> **Hình 1.** Vi điều khiển ESP32 | ![DHT11](link_anh) <br> **Hình 2.** Cảm biến DHT11 | ![MQ](link_anh) <br> **Hình 3.** Cảm biến khí MQ |
+| ![HCSR04](link_anh) <br> **Hình 4.** Cảm biến HC-SR04 | ![IR](link_anh) <br> **Hình 5.** Cảm biến IR | ![Servo](link_anh) <br> **Hình 6.** Servo SG90 |
+| ![Fan](link_anh) <br> **Hình 7.** Quạt tản nhiệt 5V | ![LED](link_anh) <br> **Hình 8.** Đèn LED & Trở | ![XL4015](link_anh) <br> **Hình 9.** Nguồn XL4015 |
+
+### 8. Tài liệu tham khảo
+
+1. Random Nerd Tutorials, [ESP32 MQTT Publish/Subscribe with Node-RED](https://randomnerdtutorials.com/)
+2. Hackaday.io, [Project Aura: Open-Source ESP32 Air Quality](https://hackaday.io/)
+3. Wokwi – [ESP32 Simulator](https://wokwi.com/)
+4. [Node-RED Documentation](https://nodered.org/docs/)
+5. [NewPing Library](https://bitbucket.org/teckel12/arduino-new-ping/wiki/Home) - Thư viện hỗ trợ non-blocking cho cảm biến siêu âm.
