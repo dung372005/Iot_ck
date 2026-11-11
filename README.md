@@ -49,9 +49,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 ### 4. Sơ đồ khối
 
-*(Lưu ý: Up ảnh sơ đồ khối của bạn vào thư mục dự án trên GitHub và thay link ảnh vào phần ngoặc đơn bên dưới)*
-
-`![Sơ đồ khối](link_anh_so_do_khoi_cua_ban_tren_github.png)`
+<img width="512" height="285" alt="image_747b69" src="https://github.com/user-attachments/assets/88ab53d8-c1a1-4115-95ab-265e46716b4e" />
 
 ---
 
@@ -102,7 +100,8 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 |:---:|:---:|:---:|
 | ![ESP32](link_anh) <br> **Hình 1.** Vi điều khiển ESP32 | ![DHT11](link_anh) <br> **Hình 2.** Cảm biến DHT11 | ![MQ](link_anh) <br> **Hình 3.** Cảm biến khí MQ |
 | ![HCSR04](link_anh) <br> **Hình 4.** Cảm biến HC-SR04 | ![IR](link_anh) <br> **Hình 5.** Cảm biến IR | ![Servo](link_anh) <br> **Hình 6.** Servo SG90 |
-| ![Fan](link_anh) <br> **Hình 7.** Quạt tản nhiệt 5V | ![LED](link_anh) <br> **Hình 8.** Đèn LED & Trở | ![XL4015](link_anh) <br> **Hình 9.** Nguồn XL4015 |
+| ![Fan](link_anh) <br> **Hình 7.** Quạt tản nhiệt 5V | ![LED](link_anh) <br> **Hình 8.** Đèn LED & Trở | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/31a68011-caf5-4df5-b75e-f462aa844db0" />
+ <br> **Hình 9.** Nguồn XL4015 |
 
 ### 8. Tài liệu tham khảo
 
