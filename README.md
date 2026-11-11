@@ -51,6 +51,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 <img width="778" height="433" alt="b97639fd-eee5-4712-841d-fcbcd1e58c5d" src="https://github.com/user-attachments/assets/3167cd4e-0d80-45b4-a2c2-e720b03bcc60" />
 
+
 <img width="778" height="433" alt="e4995fe7-97d8-42fc-83c0-cc809d1aa8c1" src="https://github.com/user-attachments/assets/c5cd630a-8d6d-4243-ac14-1349ee5e71c8" />
 
 ---
