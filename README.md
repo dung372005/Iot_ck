@@ -94,8 +94,17 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 *   **Điều khiển thiết bị:** Cung cấp các công tắc (Switch) để chủ động điều khiển bật/tắt độc lập Quạt thông gió và Đèn chiếu sáng tại từng chuồng.
 *   **Nhật ký sự kiện:** Ghi nhận và hiển thị các cảnh báo trạng thái (ví dụ: "Chuồng 1 vừa xả thức ăn", "Chuồng 2 đang cần dọn dẹp").
 *   **Trạng thái thiết bị:** Hiển thị tín hiệu kết nối online/offline từ ESP32.
+### 7. Kế hoạch thực hiện
 
-### 7. Hình ảnh linh kiện
+| Giai đoạn | Nội dung |
+| :---: | :--- |
+| 1 | Thiết kế sơ đồ nối dây (Pin Mapping); mô phỏng logic đọc cảm biến cơ bản trên Wokwi: DHT11, HC-SR04, IR và xuất xung PWM cho Servo SG90 |
+| 2 | Cấu hình PlatformIO, lập trình kết nối WiFi và MQTT Broker; viết code test gửi/nhận bản tin cơ bản, kiểm tra điều khiển Quạt 5V và Đèn LED |
+| 3 | Xây dựng thuật toán non-blocking (dùng `millis()`): Máy trạng thái nhận diện phòng (HC-SR04), lọc nhiễu IR để mở Servo, đóng gói JSON gửi lên MQTT |
+| 4 | Xây dựng Node-RED Dashboard: Lên khung giao diện giám sát chuồng (Xanh/Đỏ/Vàng), vẽ biểu đồ Nhiệt độ/Độ ẩm/Khí MQ, tạo công tắc điều khiển Quạt/Đèn |
+| 5 | Tích hợp logic nâng cao trên Node-RED: Xử lý ngưỡng báo động khí MQ để chuyển màu cảnh báo, ghi nhật ký (log) sự kiện xả thức ăn và dọn dẹp |
+| 6 | Lắp ráp sa bàn/mô hình thực tế với nguồn XL4015; hiệu chỉnh ngưỡng khoảng cách HC-SR04 và độ nhạy IR; chạy kiểm thử toàn hệ thống và quay video demo |
+### 8. Hình ảnh linh kiện
 
 | | | |
 |:---:|:---:|:---:|
@@ -103,7 +112,7 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 | <img width="220" alt="HCSR04" src="https://github.com/user-attachments/assets/9aa1e7dc-926c-48ed-8a57-c3406caf15e9" /><br>**Hình 4.** Cảm biến HC-SR04 | <img width="220" alt="IR" src="https://github.com/user-attachments/assets/94104d26-1c7a-4fca-a5ff-61d7ed4b5145" /><br>**Hình 5.** Cảm biến IR | <img width="220" alt="Servo" src="https://github.com/user-attachments/assets/bab10947-9519-4022-9ce9-dd13458822a5" /><br>**Hình 6.** Servo SG90 |
 | <img width="220" alt="Fan" src="https://github.com/user-attachments/assets/093b2657-e376-4b20-9bf6-c75fd6560e7e" /><br>**Hình 7.** Quạt tản nhiệt 5V | <img width="220" alt="LED" src="https://github.com/user-attachments/assets/e35ccaa7-97d6-4e60-91d1-c9ae8573d3a4" /><br>**Hình 8.** Đèn LED & Trở | <img width="220" alt="XL4015" src="https://github.com/user-attachments/assets/31a68011-caf5-4df5-b75e-f462aa844db0" /><br>**Hình 9.** Nguồn XL4015 |
 
-### 8. Tài liệu tham khảo
+### 9. Tài liệu tham khảo
 
 1. Random Nerd Tutorials, [ESP32 MQTT Publish/Subscribe with Node-RED](https://randomnerdtutorials.com/)
 2. Hackaday.io, [Project Aura: Open-Source ESP32 Air Quality](https://hackaday.io/)
