@@ -101,7 +101,7 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 
 | | | |
 |:---:|:---:|:---:|
-| <img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/91f4b2d2-eecb-40b6-b40d-4040ae329b1f" />
+| <img width="70" height="70" alt="images" src="https://github.com/user-attachments/assets/91f4b2d2-eecb-40b6-b40d-4040ae329b1f" />
  <br> **Hình 1.** Vi điều khiển ESP32 | <img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/ff1bce7f-48c4-4931-8a04-767ebe55d7df" />
  <br> **Hình 2.** Cảm biến DHT11 | <img width="547" height="365" alt="images" src="https://github.com/user-attachments/assets/9ddc6740-e60d-42ae-a864-965cde3749ab" />
  <br> **Hình 3.** Cảm biến khí MQ |
