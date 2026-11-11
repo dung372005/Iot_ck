@@ -51,19 +51,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 <img width="778" height="433" alt="b97639fd-eee5-4712-841d-fcbcd1e58c5d" src="https://github.com/user-attachments/assets/3167cd4e-0d80-45b4-a2c2-e720b03bcc60" />
 
-flowchart TD
-    Start([Bắt đầu]) --> Init{Kết nối Wi-Fi, MQTT}
-    Init -- Thất bại --> Init
-    Init -- Thành công --> ReadIR[Đọc cảm biến IR tại máng ăn]
-    ReadIR --> CheckIR{Có thú cưng\nđứng ở máng?}
-    
-    CheckIR -- Không --> ReadIR
-    CheckIR -- Có --> OpenServo[Mở Servo xả thức ăn]
-    
-    OpenServo --> Delay[Đợi 1.5 giây]
-    Delay --> CloseServo[Đóng nắp Servo]
-    CloseServo --> DelayCooldown[Khóa thời gian trễ\n(Tránh xả liên tục)]
-    DelayCooldown --> ReadIR
+
 ---
 
 ## Bảng kết nối các chân ESP32 (Pin Mapping)
