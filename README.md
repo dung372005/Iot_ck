@@ -49,7 +49,7 @@ Việc chăm sóc thú cưng tại các trạm thú y hoặc khách sạn thú c
 
 ### 4. Sơ đồ khối
 
-<img width="512" height="285" alt="image_747b69" src="https://github.com/user-attachments/assets/88ab53d8-c1a1-4115-95ab-265e46716b4e" />
+<img width="778" height="433" alt="b97639fd-eee5-4712-841d-fcbcd1e58c5d" src="https://github.com/user-attachments/assets/3167cd4e-0d80-45b4-a2c2-e720b03bcc60" />
 
 ---
 
@@ -98,9 +98,17 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 
 | | | |
 |:---:|:---:|:---:|
-| ![ESP32](link_anh) <br> **Hình 1.** Vi điều khiển ESP32 | ![DHT11](link_anh) <br> **Hình 2.** Cảm biến DHT11 | ![MQ](link_anh) <br> **Hình 3.** Cảm biến khí MQ |
-| ![HCSR04](link_anh) <br> **Hình 4.** Cảm biến HC-SR04 | ![IR](link_anh) <br> **Hình 5.** Cảm biến IR | ![Servo](link_anh) <br> **Hình 6.** Servo SG90 |
-| ![Fan](link_anh) <br> **Hình 7.** Quạt tản nhiệt 5V | ![LED](link_anh) <br> **Hình 8.** Đèn LED & Trở | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/31a68011-caf5-4df5-b75e-f462aa844db0" />
+| <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/9380072d-c243-43f8-b64c-028f3c269812" />
+ <br> **Hình 1.** Vi điều khiển ESP32 | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/939949de-78d7-4589-bd78-2a7c100a1174" />
+<br> **Hình 2.** Cảm biến DHT11 | <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/a94ddc4d-8fea-4be2-b512-97166be84f8a" />
+ <br> **Hình 3.** Cảm biến khí MQ |
+| <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/9aa1e7dc-926c-48ed-8a57-c3406caf15e9" />
+ <br> **Hình 4.** Cảm biến HC-SR04 | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/94104d26-1c7a-4fca-a5ff-61d7ed4b5145" />
+ <br> **Hình 5.** Cảm biến IR | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/bab10947-9519-4022-9ce9-dd13458822a5" />
+ <br> **Hình 6.** Servo SG90 |
+| <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/093b2657-e376-4b20-9bf6-c75fd6560e7e" />
+ <br> **Hình 7.** Quạt tản nhiệt 5V | <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/e35ccaa7-97d6-4e60-91d1-c9ae8573d3a4" />
+ <br> **Hình 8.** Đèn LED & Trở | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/31a68011-caf5-4df5-b75e-f462aa844db0" />
  <br> **Hình 9.** Nguồn XL4015 |
 
 ### 8. Tài liệu tham khảo
