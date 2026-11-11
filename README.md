@@ -101,10 +101,10 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 
 | | | |
 |:---:|:---:|:---:|
-| ![ESP32](<img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/91f4b2d2-eecb-40b6-b40d-4040ae329b1f" />
-) <br> **Hình 1.** Vi điều khiển ESP32 | ![DHT11](link_anh) <br> **Hình 2.** Cảm biến DHT11 | ![MQ](link_anh) <br> **Hình 3.** Cảm biến khí MQ |
-| ![HCSR04](link_anh) <br> **Hình 4.** Cảm biến HC-SR04 | ![IR](link_anh) <br> **Hình 5.** Cảm biến IR | ![Servo](link_anh) <br> **Hình 6.** Servo SG90 |
-| ![Fan](link_anh) <br> **Hình 7.** Quạt tản nhiệt 5V | ![LED](link_anh) <br> **Hình 8.** Đèn LED & Trở | ![XL4015](link_anh) <br> **Hình 9.** Nguồn XL4015 |
+| (<img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/91f4b2d2-eecb-40b6-b40d-4040ae329b1f" />
+) <br> **Hình 1.** Vi điều khiển ESP32 | (link_anh) <br> **Hình 2.** Cảm biến DHT11 | (link_anh) <br> **Hình 3.** Cảm biến khí MQ |
+| (link_anh) <br> **Hình 4.** Cảm biến HC-SR04 | (link_anh) <br> **Hình 5.** Cảm biến IR | (link_anh) <br> **Hình 6.** Servo SG90 |
+| (link_anh) <br> **Hình 7.** Quạt tản nhiệt 5V | (link_anh) <br> **Hình 8.** Đèn LED & Trở |(link_anh) <br> **Hình 9.** Nguồn XL4015 |
 
 ### 8. Tài liệu tham khảo
 
