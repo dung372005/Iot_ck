@@ -94,22 +94,13 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 
 ### 7. Hình ảnh linh kiện
 
-*(Lưu ý: Bạn hãy up ảnh thực tế của linh kiện vào GitHub và thay link vào trong các dấu ngoặc đơn)*
+### 7. Hình ảnh linh kiện
 
 | | | |
 |:---:|:---:|:---:|
-| <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/9380072d-c243-43f8-b64c-028f3c269812" />
- <br> **Hình 1.** Vi điều khiển ESP32 | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/939949de-78d7-4589-bd78-2a7c100a1174" />
-<br> **Hình 2.** Cảm biến DHT11 | <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/a94ddc4d-8fea-4be2-b512-97166be84f8a" />
- <br> **Hình 3.** Cảm biến khí MQ |
-| <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/9aa1e7dc-926c-48ed-8a57-c3406caf15e9" />
- <br> **Hình 4.** Cảm biến HC-SR04 | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/94104d26-1c7a-4fca-a5ff-61d7ed4b5145" />
- <br> **Hình 5.** Cảm biến IR | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/bab10947-9519-4022-9ce9-dd13458822a5" />
- <br> **Hình 6.** Servo SG90 |
-| <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/093b2657-e376-4b20-9bf6-c75fd6560e7e" />
- <br> **Hình 7.** Quạt tản nhiệt 5V | <img width="220" height="" alt="images" src="https://github.com/user-attachments/assets/e35ccaa7-97d6-4e60-91d1-c9ae8573d3a4" />
- <br> **Hình 8.** Đèn LED & Trở | <img width="220" height="220" alt="images" src="https://github.com/user-attachments/assets/31a68011-caf5-4df5-b75e-f462aa844db0" />
- <br> **Hình 9.** Nguồn XL4015 |
+| <img width="220" alt="ESP32" src="https://github.com/user-attachments/assets/9380072d-c243-43f8-b64c-028f3c269812" /><br>**Hình 1.** Vi điều khiển ESP32 | <img width="220" alt="DHT11" src="https://github.com/user-attachments/assets/939949de-78d7-4589-bd78-2a7c100a1174" /><br>**Hình 2.** Cảm biến DHT11 | <img width="220" alt="MQ" src="https://github.com/user-attachments/assets/a94ddc4d-8fea-4be2-b512-97166be84f8a" /><br>**Hình 3.** Cảm biến khí MQ |
+| <img width="220" alt="HCSR04" src="https://github.com/user-attachments/assets/9aa1e7dc-926c-48ed-8a57-c3406caf15e9" /><br>**Hình 4.** Cảm biến HC-SR04 | <img width="220" alt="IR" src="https://github.com/user-attachments/assets/94104d26-1c7a-4fca-a5ff-61d7ed4b5145" /><br>**Hình 5.** Cảm biến IR | <img width="220" alt="Servo" src="https://github.com/user-attachments/assets/bab10947-9519-4022-9ce9-dd13458822a5" /><br>**Hình 6.** Servo SG90 |
+| <img width="220" alt="Fan" src="https://github.com/user-attachments/assets/093b2657-e376-4b20-9bf6-c75fd6560e7e" /><br>**Hình 7.** Quạt tản nhiệt 5V | <img width="220" alt="LED" src="https://github.com/user-attachments/assets/e35ccaa7-97d6-4e60-91d1-c9ae8573d3a4" /><br>**Hình 8.** Đèn LED & Trở | <img width="220" alt="XL4015" src="https://github.com/user-attachments/assets/31a68011-caf5-4df5-b75e-f462aa844db0" /><br>**Hình 9.** Nguồn XL4015 |
 
 ### 8. Tài liệu tham khảo
 
