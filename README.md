@@ -101,10 +101,18 @@ Hệ thống sử dụng broker công khai (HiveMQ hoặc EMQX). Tất cả các
 
 | | | |
 |:---:|:---:|:---:|
-| (<img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/91f4b2d2-eecb-40b6-b40d-4040ae329b1f" />
-) <br> **Hình 1.** Vi điều khiển ESP32 | (link_anh) <br> **Hình 2.** Cảm biến DHT11 | (link_anh) <br> **Hình 3.** Cảm biến khí MQ |
-| (link_anh) <br> **Hình 4.** Cảm biến HC-SR04 | (link_anh) <br> **Hình 5.** Cảm biến IR | (link_anh) <br> **Hình 6.** Servo SG90 |
-| (link_anh) <br> **Hình 7.** Quạt tản nhiệt 5V | (link_anh) <br> **Hình 8.** Đèn LED & Trở |(link_anh) <br> **Hình 9.** Nguồn XL4015 |
+| <img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/91f4b2d2-eecb-40b6-b40d-4040ae329b1f" />
+ <br> **Hình 1.** Vi điều khiển ESP32 | <img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/ff1bce7f-48c4-4931-8a04-767ebe55d7df" />
+ <br> **Hình 2.** Cảm biến DHT11 | <img width="547" height="365" alt="images" src="https://github.com/user-attachments/assets/9ddc6740-e60d-42ae-a864-965cde3749ab" />
+ <br> **Hình 3.** Cảm biến khí MQ |
+| <img width="447" height="447" alt="images" src="https://github.com/user-attachments/assets/f781c0a4-4b16-477c-bde8-c3a07f7943de" />
+ <br> **Hình 4.** Cảm biến HC-SR04 | <img width="475" height="421" alt="images" src="https://github.com/user-attachments/assets/35d7be85-84b6-4f87-95eb-74cf1ebdff45" />
+ <br> **Hình 5.** Cảm biến IR | <img width="547" height="365" alt="images" src="https://github.com/user-attachments/assets/de72a511-1c18-4fea-8dcc-dbe4cd554f37" />
+<br> **Hình 6.** Servo SG90 |
+| <img width="554" height="554" alt="images" src="https://github.com/user-attachments/assets/aeabdd4d-bdcf-4d9f-8d7d-f2e725f725dd" />
+ <br> **Hình 7.** Quạt tản nhiệt 5V | <img width="238" height="212" alt="images" src="https://github.com/user-attachments/assets/42db57f1-e3db-4be0-a3ad-9d0027edf7d4" />
+ <br> **Hình 8.** Đèn LED & Trở |<img width="225" height="225" alt="images" src="https://github.com/user-attachments/assets/0a573791-ae6a-4d08-a516-5304a954f299" />
+ <br> **Hình 9.** Nguồn XL4015 |
 
 ### 8. Tài liệu tham khảo
 
